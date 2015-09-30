@@ -40,7 +40,8 @@ class AndroidSdkPlugin(structure: sbt.Load.BuildStructure, projectRef: ProjectRe
       case _ => false
     }
 
-    val targetSdkVersion = SettingKey[String]("target-sdk-version")
+    val targetSdkVersion_1_3 = SettingKey[String]("target-sdk-version")
+    val targetSdkVersion_1_4 = TaskKey[String]("target-sdk-version")
     val manifestPath     = SettingKey[File]("manifest-path")
     val apkFile          = SettingKey[File]("apk-file")
     val libraryProject   = SettingKey[Boolean]("library-project")
@@ -66,7 +67,7 @@ class AndroidSdkPlugin(structure: sbt.Load.BuildStructure, projectRef: ProjectRe
 
     try {
       for {
-        targetVersion <- extract(Keys.targetSdkVersion)
+        targetVersion <- extractTask(Keys.targetSdkVersion_1_4).orElse(extract(Keys.targetSdkVersion_1_3))
         manifestPath  <- extractPath(Keys.manifestPath)
         apkPath       <- extractPath(Keys.apkFile)
         projectLayout <- Keys.projectLayout
