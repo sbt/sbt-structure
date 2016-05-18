@@ -2,8 +2,8 @@ package org.jetbrains.sbt
 package extractors
 
 import org.jetbrains.sbt.structure._
-import sbt._
-import sbt.Project.Initialize
+import sbt._, syntax._
+import sbt.Def.Initialize
 
 /**
   * @author Dmitry Naydanov

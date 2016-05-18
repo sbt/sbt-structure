@@ -4,8 +4,8 @@ package extractors
 import java.io.File
 
 import org.jetbrains.sbt.structure.BuildData
-import sbt._
-import sbt.Project.Initialize
+import sbt._, syntax._
+import sbt.Def.Initialize
 
 /**
  * @author Nikolay Obedin

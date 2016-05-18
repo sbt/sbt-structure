@@ -3,8 +3,9 @@ package extractors
 
 import org.jetbrains.sbt.structure._
 import org.jetbrains.sbt.{structure => jb}
-import sbt._
-import sbt.Project.Initialize
+import sbt._, syntax._
+import sbt.internal.BuildDependencies
+import sbt.Def.Initialize
 
 /**
  * @author Nikolay Obedin

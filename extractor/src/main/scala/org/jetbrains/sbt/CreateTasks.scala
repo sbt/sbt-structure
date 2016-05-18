@@ -1,7 +1,9 @@
-package org.jetbrains.sbt
+package sbt
 
-import org.jetbrains.sbt.extractors._
-import sbt._
+import sbt.internal.Load
+import syntax._
+import org.jetbrains.sbt._
+import extractors._
 
 /**
  * @author Nikolay Obedin

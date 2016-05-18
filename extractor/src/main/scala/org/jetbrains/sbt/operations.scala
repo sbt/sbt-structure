@@ -1,14 +1,15 @@
 package org.jetbrains.sbt
 
 import org.jetbrains.sbt.structure.ModuleIdentifier
-import sbt._
+import sbt._, syntax._
+import sbt.internal.BuildStructure
 
 /**
  * @author Nikolay Obedin
  * @since 4/10/15.
  */
 trait SbtStateOps {
-  def structure(state: State): Load.BuildStructure =
+  def structure(state: State): BuildStructure =
     sbt.Project.structure(state)
 
   implicit def `enrich SettingKey`[T](key: SettingKey[T]) = new {

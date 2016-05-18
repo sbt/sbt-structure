@@ -2,8 +2,9 @@ package org.jetbrains.sbt
 package extractors
 
 import org.jetbrains.sbt.structure._
-import sbt.Project.Initialize
-import sbt._
+import sbt.Def.Initialize
+import sbt._, syntax._
+import sbt.internal.inc.ScalaInstance
 
 /**
  * @author Nikolay Obedin
@@ -38,7 +39,7 @@ class ProjectExtractor(projectRef: ProjectRef,
 
   private[extractors] def extract: ProjectData = {
     val resolvers = fullResolvers.collect {
-      case MavenRepository(name, root) => ResolverData(name, root)
+      case MavenRepository(name, root, _) => ResolverData(name, root)
     }.toSet
     val configurations  =
       mergeConfigurations(sourceConfigurations.flatMap(extractConfiguration))
@@ -73,7 +74,7 @@ class ProjectExtractor(projectRef: ProjectRef,
     if (testConfigurations.contains(configuration)) Test else configuration
 
   private def extractScala: Option[ScalaData] = scalaInstance.map { instance =>
-    val extraJars = instance.extraJars.filter(_.getName.contains("reflect"))
+    val extraJars = instance.allJars.filter(_.getName.contains("reflect"))
     ScalaData(instance.version, instance.libraryJar, instance.compilerJar, extraJars, scalacOptions)
   }
 

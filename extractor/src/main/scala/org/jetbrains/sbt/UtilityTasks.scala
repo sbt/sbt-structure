@@ -2,9 +2,10 @@ package org.jetbrains.sbt
 
 import java.io.{FileOutputStream, BufferedWriter, OutputStreamWriter}
 
-import sbt._
+import sbt._, syntax._
+import sbt.internal.librarymanagement.GetClassifiersModule
 import extractors.SettingKeys
-import sbt.Project.Initialize
+import sbt.Def.Initialize
 import structure.XmlSerializer._
 import scala.xml._
 

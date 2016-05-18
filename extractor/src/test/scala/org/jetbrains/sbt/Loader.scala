@@ -21,7 +21,7 @@ object Loader {
     writeLinesTo(commandsFile,
       "set SettingKey[Option[File]](\"sbt-structure-output-file\") in Global := Some(file(\"" + path(structureFile) + "\"))",
       "set SettingKey[String](\"sbt-structure-options\") in Global := \"" + opts + "\"",
-      "apply -cp " + path(pluginFile) + " org.jetbrains.sbt.CreateTasks",
+      "apply -cp " + path(pluginFile) + " sbt.CreateTasks",
       "*/*:dump-structure")
 
     val commands = Seq(JavaVM,

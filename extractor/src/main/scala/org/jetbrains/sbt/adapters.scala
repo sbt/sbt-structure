@@ -1,8 +1,9 @@
 package org.jetbrains.sbt
 
 import sbt._
+import sbt.internal.LoadedBuildUnit
 
-case class LoadedBuildUnitAdapter(delegate: Load.LoadedBuildUnit) {
+case class LoadedBuildUnitAdapter(delegate: LoadedBuildUnit) {
   def imports: Seq[String] =
     delegate.imports
 

@@ -2,8 +2,8 @@ package org.jetbrains.sbt
 package extractors
 
 import org.jetbrains.sbt.structure.{ModuleIdentifier, ModuleData, RepositoryData}
-import sbt.Project.Initialize
-import sbt._
+import sbt.Def.Initialize
+import sbt._, syntax._
 
 /**
  * @author Nikolay Obedin

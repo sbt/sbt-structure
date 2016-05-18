@@ -3,7 +3,7 @@ package extractors
 
 import org.jetbrains.sbt.structure.StructureData
 import sbt._
-import Project.Initialize
+import Def.Initialize
 
 //import scala.language.reflectiveCalls
 
